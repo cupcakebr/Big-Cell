@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cliente:</strong>
+  <% Cliente.all.each do |cliente|%>
+    <% if cliente.id === @venda.clienteId %>
+      <%= cliente.nome %>
+      <% end %>
+    <% end %>
+</p>
+
+<p>
+  <strong>Produto:</strong>
+    <% Produto.all.each do |produto|%>
+    <% if produto.id === @venda.produtoId %>
+      <%= produto.nome %>
+      <% end %>
+    <% end %>
+</p>
+
+<p>
+  <strong>Valor_servico:</strong>
+  <%= @venda.valorServico %>
+</p>
+
+<p>
+  <strong>Valor_total:</strong>
+  <% Produto.all.each do |produto| %>
+    <% if produto.id === @venda.produtoId %>
+      <%= produto.preco + @venda.valorServico%>
+      <% end %>
+    <% end %>
+</p>
+
+<%= link_to 'Edit', edit_venda_path(@venda) %> |
+<%= link_to 'Back', vendas_path %>
